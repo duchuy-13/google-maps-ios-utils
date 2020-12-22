@@ -108,9 +108,9 @@ static NSArray<UIColor *> *kGMUBucketBackgroundColors;
   NSUInteger bucketIndex = [self bucketIndexForSize:size];
   NSString *text;
 
-  // If size is smaller to first bucket size, use the size as is otherwise round it down to the
+  // If size is smaller to last bucket size, use the size as is otherwise round it down to the
   // nearest bucket to limit the number of cluster icons we need to generate.
-  if (size < _buckets[0].unsignedLongValue) {
+  if (size < _buckets.lastObject.unsignedLongValue) {
     text = [NSString stringWithFormat:@"%ld", (unsigned long)size];
   } else {
     text = [NSString stringWithFormat:@"%ld+", _buckets[bucketIndex].unsignedLongValue];
